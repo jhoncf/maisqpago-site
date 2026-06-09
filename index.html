@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mais Q Pago | Negociação de dívidas</title>
+      <meta
+        name="description"
+        content="Mais Q Pago: plataforma de negociação de dívidas para acordos mais rápidos, comunicação clara e mais controle da operação."
+      />
+    <style>
+      :root {
+        --bg: #f3f5f7;
+        --surface: #ffffff;
+        --text: #111827;
+        --muted: #5b6472;
+        --brand: #0f3f7a;
+        --brand-2: #0f6a5e;
+        --border: rgba(17, 24, 39, 0.1);
+        --shadow: 0 24px 70px rgba(15, 23, 42, 0.14);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(19, 60, 122, 0.1), transparent 34%),
+          radial-gradient(circle at bottom right, rgba(15, 106, 94, 0.08), transparent 30%),
+          var(--bg);
+      }
+
+      .page {
+        width: min(1240px, calc(100% - 28px));
+        margin: 0 auto;
+        padding: 18px 0 44px;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 86vh;
+        border-radius: 30px;
+        overflow: hidden;
+        background: #0d1b2f;
+        box-shadow: var(--shadow);
+        display: grid;
+        align-items: end;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgba(8, 15, 28, 0.88) 0%, rgba(8, 15, 28, 0.64) 44%, rgba(8, 15, 28, 0.14) 100%),
+          url("hero-topo.png") center center / cover no-repeat;
+        transform: scale(1.01);
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(4, 10, 20, 0.05), rgba(4, 10, 20, 0.38));
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        padding: 60px;
+        max-width: 840px;
+        color: #fff;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px 16px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        font-size: 0.9rem;
+        letter-spacing: 0.02em;
+      }
+
+      h1 {
+        margin: 18px 0 14px;
+        font-size: clamp(2.65rem, 6.4vw, 5.4rem);
+        line-height: 0.94;
+        letter-spacing: -0.04em;
+        max-width: 10ch;
+      }
+
+      .lead {
+        margin: 0;
+        max-width: 60ch;
+        font-size: clamp(1.05rem, 2vw, 1.22rem);
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.88);
+      }
+
+      .cta-row {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+        margin-top: 30px;
+      }
+
+      .btn {
+        appearance: none;
+        border: 0;
+        border-radius: 14px;
+        padding: 14px 20px;
+        font-weight: 700;
+        font-size: 0.98rem;
+        text-decoration: none;
+        transition: transform 160ms ease, box-shadow 160ms ease, opacity 160ms ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-1px);
+      }
+
+      .btn-primary {
+        color: white;
+        background: linear-gradient(135deg, var(--brand), #0d58a6);
+        box-shadow: 0 16px 30px rgba(19, 60, 122, 0.3);
+      }
+
+      .btn-secondary {
+        color: white;
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        backdrop-filter: blur(10px);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 38px;
+      }
+
+      .stat {
+        padding: 16px 18px;
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        backdrop-filter: blur(10px);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.25rem;
+        margin-bottom: 4px;
+      }
+
+      .stat span {
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.93rem;
+      }
+
+      .sections {
+        margin-top: 18px;
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 26px;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.06);
+      }
+
+      .card h2 {
+        margin: 0 0 10px;
+        font-size: 1.06rem;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .split {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 18px;
+      }
+
+      .list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 12px;
+      }
+
+      .list li {
+        display: flex;
+        gap: 12px;
+        align-items: flex-start;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+        color: var(--muted);
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        margin-top: 7px;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        flex: 0 0 auto;
+      }
+
+      .form {
+        display: grid;
+        gap: 12px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      label {
+        font-size: 0.92rem;
+        color: #314055;
+        font-weight: 600;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+        border-radius: 14px;
+        border: 1px solid var(--border);
+        padding: 14px 16px;
+        font: inherit;
+        background: #fbfcfe;
+        color: var(--text);
+      }
+
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .fine {
+        color: var(--muted);
+        font-size: 0.88rem;
+        line-height: 1.5;
+      }
+
+      .section-title {
+        margin: 34px 0 14px;
+        font-size: 1.05rem;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--brand);
+      }
+
+      .band {
+        margin-top: 18px;
+        padding: 22px 24px;
+        border-radius: 24px;
+        background: linear-gradient(135deg, rgba(15, 63, 122, 0.08), rgba(15, 106, 94, 0.08));
+        border: 1px solid rgba(15, 63, 122, 0.12);
+      }
+
+      .band p {
+        margin: 0;
+        color: var(--text);
+        font-size: 1.08rem;
+        line-height: 1.7;
+      }
+
+      footer {
+        padding: 18px 2px 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+        text-align: center;
+      }
+
+      @media (max-width: 900px) {
+        .hero {
+          min-height: auto;
+        }
+
+        .hero-content {
+          padding: 28px;
+        }
+
+        .stats,
+        .sections,
+        .split {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero" aria-label="Apresentação da Mais Q Pago">
+        <div class="hero-content">
+          <div class="eyebrow">maisqpago.com.br | negociação de dívidas</div>
+          <h1>Negocie dívidas com mais clareza e mais resultado.</h1>
+          <p class="lead">
+            A Mais Q Pago ajuda empresas a organizar propostas, conduzir acordos e acompanhar negociações
+            em um só lugar, com uma jornada simples para quem precisa resolver.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contato">Quero falar com a Mais Q Pago</a>
+            <a class="btn btn-secondary" href="#como-funciona">Entender a proposta</a>
+          </div>
+          <div class="stats" aria-label="Benefícios principais">
+            <div class="stat">
+              <strong>Acordos mais rápidos</strong>
+              <span>Menos etapas soltas e mais foco na conversa que fecha.</span>
+            </div>
+            <div class="stat">
+              <strong>Operação organizada</strong>
+              <span>Centralize propostas, retornos e próximos passos.</span>
+            </div>
+            <div class="stat">
+              <strong>Experiência mais clara</strong>
+              <span>Uma página objetiva para explicar a solução e captar interesse.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="band">
+        <p>
+          Uma página pensada para transmitir confiança desde o primeiro contato, com uma proposta direta
+          para quem precisa recuperar valores e conduzir negociações com mais controle.
+        </p>
+      </div>
+
+      <h2 class="section-title">Como a solução se apresenta</h2>
+      <section class="sections" id="como-funciona">
+        <article class="card">
+          <h2>O problema</h2>
+          <p>
+            Cobrança e negociação de dívidas costumam se perder em mensagens dispersas, planilhas e
+            follow-ups manuais. Isso torna o fechamento mais lento e menos previsível.
+          </p>
+        </article>
+        <article class="card">
+          <h2>A solução</h2>
+          <p>
+            A Mais Q Pago centraliza a jornada de negociação em um ponto só, com comunicação objetiva,
+            acompanhamento do status e foco em fechar acordos.
+          </p>
+        </article>
+        <article class="card">
+          <h2>O primeiro passo</h2>
+          <p>
+            Começar com uma página direta, captar interessados e validar a demanda antes de expandir a
+            plataforma.
+          </p>
+        </article>
+      </section>
+
+      <h2 class="section-title">O que a operação ganha</h2>
+      <section class="split" id="contato">
+        <div class="card">
+          <h2>Como a plataforma pode ajudar</h2>
+          <ul class="list">
+            <li><span class="dot"></span><span>Apresentar ofertas e condições de negociação com mais clareza.</span></li>
+            <li><span class="dot"></span><span>Organizar o fluxo entre cobrança, atendimento e fechamento.</span></li>
+            <li><span class="dot"></span><span>Reduzir retrabalho com uma experiência simples para acompanhar acordos.</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2>Contato rápido</h2>
+          <form class="form">
+            <div class="field">
+              <label for="name">Nome</label>
+              <input id="name" type="text" placeholder="Seu nome" />
+            </div>
+            <div class="field">
+              <label for="email">E-mail</label>
+              <input id="email" type="email" placeholder="seu@email.com" />
+            </div>
+            <div class="field">
+              <label for="message">Mensagem</label>
+              <textarea id="message" placeholder="Conte como você quer usar a Mais Q Pago"></textarea>
+            </div>
+            <a class="btn btn-primary" href="mailto:contato@maisqpago.com.br">Enviar interesse</a>
+          </form>
+          <p class="fine">
+            Depois podemos ligar este bloco a WhatsApp, e-mail ou CRM.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        © 2026 Mais Q Pago. Plataforma de negociação de dívidas.
+      </footer>
+    </main>
+  </body>
+</html>
